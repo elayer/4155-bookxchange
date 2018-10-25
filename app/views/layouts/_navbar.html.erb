@@ -1,15 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <%= link_to 'Movie Reviews', root_path, class: 'navbar-brand'%>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Review list</a>
-        <a class="nav-item nav-link" href="#">Add review</a>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="<%= active_class?(reviews_path) %>">
+          <%= link_to 'Reviews', reviews_path, class: 'nav-item nav-link'%>
+        </li>
+        <li class="<%= active_class?(new_review_path) %>">
+          <%= link_to 'New review', new_review_path, class: 'nav-item nav-link'%>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

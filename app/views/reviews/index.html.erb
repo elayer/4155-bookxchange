@@ -1,0 +1,36 @@
+<div class="container" id="reviews">
+  <h2 class="mt-4">List of reviews</h2>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Rating</th>
+    </tr>
+
+    <% @reviews.each do |review| %>
+    <tr>
+      <td>
+        <%= review.title %>
+      </td>
+      <td>
+        <%= review.author %>
+      </td>
+      <td>
+        <%= review.rating %>
+      </td>
+      <td>
+        <%= link_to 'Show', review_path(review) %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_review_path(review) %>
+      </td>
+      <td>
+        <%= link_to 'Delete',
+                            review_path(review),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

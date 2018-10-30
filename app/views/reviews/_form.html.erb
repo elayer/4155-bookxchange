@@ -1,41 +1,42 @@
 <%= form_for @review do |f| %>
- 
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@review.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <p>
-    <%= f.label :title, 'Movie Title' %><br>
-    <%= f.text_field :title %>
-  </p>
 
-  <p>
-    <%= f.label :author, 'Author' %><br>
-    <%= f.text_field :author %>
-  </p>
+<% if @review.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@review.errors.count, "error") %> prohibited
+    this article from being saved:
+  </h2>
+  <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+    <li>
+      <%= msg %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <p>
-    <%= f.label :rating, 'Rating' %><br>
-    <%= f.number_field :rating %>
-  </p>
- 
-  <p>
-    <%= f.label :text, 'Write your review' %><br>
-    <%= f.text_area :text %>
-  </p>
- 
-  <p>
-    <%= f.submit 'Submit' %>
-  </p>
- 
+<div class="form-group mt-5">
+  <%= f.label :title, 'Movie Title' %><br>
+  <%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :author, 'Author' %><br>
+  <%= f.text_field :author, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :rating, 'Rating' %><br>
+  <%= f.number_field :rating, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :text, 'Write your review' %><br>
+  <%= f.text_area :text, class: "form-control" %>
+</div>
+
+<%= f.submit 'Submit', class: "btn btn-primary" %>
+
+
 <% end %>

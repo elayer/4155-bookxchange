@@ -1,36 +1,39 @@
 <div class="container" id="reviews">
   <h2 class="mt-4">List of reviews</h2>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Rating</th>
-    </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Rating</th>
+        <th>Options</th>
+      </tr>
+    </thead>
 
-    <% @reviews.each do |review| %>
-    <tr>
-      <td>
-        <%= review.title %>
-      </td>
-      <td>
-        <%= review.author %>
-      </td>
-      <td>
-        <%= review.rating %>
-      </td>
-      <td>
-        <%= link_to 'Show', review_path(review) %>
-      </td>
-      <td>
-        <%= link_to 'Edit', edit_review_path(review) %>
-      </td>
-      <td>
-        <%= link_to 'Delete',
+    <tbody>
+      <% @reviews.each do |review| %>
+      <tr>
+        <td>
+          <%= review.title %>
+        </td>
+        <td>
+          <%= review.author %>
+        </td>
+        <td>
+          <%= review.rating %>
+        </td>
+        <td>
+          <%= link_to 'Show', review_path(review) %>
+          <%= link_to 'Edit', edit_review_path(review), class: 'ml-3'%>
+          <%= link_to 'Delete',
                             review_path(review),
                             method: :delete,
-                            data: { confirm: 'Are you sure?' } %>
-      </td>
-    </tr>
-    <% end %>
+                            data: { confirm: 'Are you sure?' }, 
+                            class: 'ml-3'%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
+

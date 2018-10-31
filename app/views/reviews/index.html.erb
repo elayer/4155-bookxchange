@@ -1,6 +1,9 @@
 <div class="container" id="reviews">
-  <h2 class="mt-4">List of reviews</h2>
-  <table class="table">
+  <h2 class="mt-4 mb-5">List of reviews</h2>
+  <p v-if="listLength == 0">Oh snap! There are currently no reviews!
+    <span><%= link_to 'Add a review now', new_review_path %></span>
+  </p>
+  <table v-if="listLength > 0" class="table">
     <thead>
       <tr>
         <th>Title</th>
@@ -23,17 +26,31 @@
           <%= review.rating %>
         </td>
         <td>
-          <%= link_to 'Show', review_path(review) %>
-          <%= link_to 'Edit', edit_review_path(review), class: 'ml-3'%>
+          <%= link_to 'Show', review_path(review), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Edit', edit_review_path(review), class: 'ml-2 btn btn-warning text-white btn-sm'%>
           <%= link_to 'Delete',
                             review_path(review),
                             method: :delete,
                             data: { confirm: 'Are you sure?' }, 
-                            class: 'ml-3'%>
+                            class: 'ml-2 btn btn-danger btn-sm'%>
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+
+<script>
+  
+  // Javascript to display different elements depending on length of @reviews
+  var showReviews = new Vue({
+    el: '#reviews',
+    computed: {
+      listLength() {
+        return '<%= @reviews.length %>';
+      }
+    }
+  })
+  
+</script>
 

@@ -1,9 +1,9 @@
 #reviews {
-  tr {
-    transition: .5s ease;
-    
-    &:hover {
-        background-color: rgb(241, 239, 239);
-    }
+  th {
+    border-top: none;
+  }
+  
+  a.btn {
+    padding: 2px 12px;
   }
 }

@@ -7,3 +7,13 @@
     padding: 2px 12px;
   }
 }
+
+#new-review, #edit-review {
+  .text-area {
+    height: 133px;
+  }
+
+  img {
+    border-radius: 7px;
+  }
+}

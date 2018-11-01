@@ -14,12 +14,12 @@
 </div>
 <% end %>
 <%= form_for @review do |f| %>
-<div class="row">
+<div id="review-form" class="row">
   <div class="col-sm-3">
-    <img src="https://vignette.wikia.nocookie.net/undertale-rho/images/5/5f/Placeholder.jpg/revision/latest?cb=20180213155916"
-      width="250px" height="250px">
+    <img :src="userImage" width="250px" @error="handleInvalidImage">
     <div class="form-group">
-      <%= f.text_field :image, class: "form-control mt-3", placeholder: "Enter image url" %>
+      <%= f.text_field :image, class: "form-control mt-3", placeholder: "Enter image url", :@blur => 'updateImage' %>
+      <p v-if="invalidImage" class="text-danger mt-2">Enter a valid url</p>
     </div>
   </div>
 
@@ -46,3 +46,26 @@
   </div>
 </div>
 <% end %>
+
+<script>
+
+  var dynamicImage = new Vue({
+    el: '#review-form',
+    data: {
+      defaultImage: 'http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png',
+      userImage: '<%= @review.image %>',
+      invalidImage: false
+    },
+    methods: {
+      updateImage(e) {
+        this.userImage = e.target.value
+        this.invalidImage = false;
+      },
+      handleInvalidImage() {
+        this.invalidImage = true;
+        this.userImage = this.defaultImage;
+      }
+    }
+  })
+
+</script>

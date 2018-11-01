@@ -1,5 +1,3 @@
-<%= form_for @review do |f| %>
-
 <% if @review.errors.any? %>
 <div id="error_explanation">
   <h2>
@@ -15,26 +13,36 @@
   </ul>
 </div>
 <% end %>
-
+<%= form_for @review do |f| %>
 <div class="row">
-  <div class="form-group col-sm-5">
-    <%= f.label :title, 'Movie Title' %><br>
-    <%= f.text_field :title, class: "form-control" %>
+  <div class="col-sm-3">
+    <img src="https://vignette.wikia.nocookie.net/undertale-rho/images/5/5f/Placeholder.jpg/revision/latest?cb=20180213155916"
+      width="250px" height="250px">
+    <div class="form-group">
+      <%= f.text_field :image, class: "form-control mt-3", placeholder: "Enter image url" %>
+    </div>
   </div>
-    <div class="form-group col-sm-5">
-      <%= f.label :author, 'Author' %><br>
-      <%= f.text_field :author, class: "form-control" %>
-    </div>
-    <div class="form-group col">
-      <%= f.label :rating, 'Rating' %><br>
-      <%= f.number_field :rating, class: "form-control" %>
-    </div>
-</div>
-<div class="form-group">
-  <%= f.label :text, 'Write your review' %><br>
-  <%= f.text_area :text, class: "form-control text-area", height: "300px" %>
-</div>
 
-<%= f.submit 'Submit', class: "btn btn-primary" %>
-
+  <div class="col">
+    <div class="row">
+      <div class="form-group col-sm-5">
+        <%= f.label :title, 'Movie Title' %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group col-sm-5">
+        <%= f.label :author, 'Author' %><br>
+        <%= f.text_field :author, class: "form-control" %>
+      </div>
+      <div class="form-group col">
+        <%= f.label :rating, 'Rating' %><br>
+        <%= f.number_field :rating, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :text, 'Write your review' %><br>
+      <%= f.text_area :text, class: "form-control text-area", height: "300px" %>
+    </div>
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
+  </div>
+</div>
 <% end %>

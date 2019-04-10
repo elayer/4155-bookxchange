@@ -23,3 +23,9 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+production:
+  <<: *default
+  database: sample_app_production
+  username: sample_app
+  password: <%= ENV['BOOKXCHANGE_DATABASE_PASSWORD'] %>

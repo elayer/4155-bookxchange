@@ -1,0 +1,58 @@
+<div class="container" id="books">
+  <h2 class="mt-4 mb-5">List of books to read</h2>
+  <p v-if="listLength == 0">Uh Oh! There's no books right now!
+    <span><%= link_to 'Add Book Now!', new_book_path %></span>
+  </p>
+  <table v-if="listLength > 0" class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Progress</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= book.title %>
+        </td>
+        <td>
+          <%= book.author %>
+        </td>
+        <td>
+          <%= book.description %>
+        </td>
+        <td>
+          <%= book.progress %>
+        </td>
+        <td>
+          <%= link_to 'Show', book_path(book), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Edit', edit_book_path(book), class: 'ml-2 btn btn-warning text-white btn-sm'%>
+          <%= link_to 'Delete',
+                            book_path(book),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' }, 
+                            class: 'ml-2 btn btn-danger btn-sm'%>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  
+  // Javascript to display different elements depending on length of @books
+  var showBooks = new Vue({
+    el: '#books',
+    computed: {
+      listLength() {
+        return '<%= @books.length %>';
+      }
+    }
+  })
+  
+</script>

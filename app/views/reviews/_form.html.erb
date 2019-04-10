@@ -2,7 +2,7 @@
 <div id="error_explanation">
   <h2>
     <%= pluralize(@review.errors.count, "error") %> prohibited
-    this article from being saved:
+    this book from being saved:
   </h2>
   <ul>
     <% @review.errors.full_messages.each do |msg| %>
@@ -13,6 +13,7 @@
   </ul>
 </div>
 <% end %>
+
 <%= form_for @review do |f| %>
 <div id="review-form" class="row">
   <div class="col-sm-3">
@@ -26,7 +27,7 @@
   <div class="col">
     <div class="row">
       <div class="form-group col-sm-5">
-        <%= f.label :title, 'Movie Title' %><br>
+        <%= f.label :title, 'Book Title' %><br>
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="form-group col-sm-5">
@@ -52,7 +53,7 @@
   var dynamicImage = new Vue({
     el: '#review-form',
     data: {
-      defaultImage: 'http://www.indre-reisid.ee/wp-content/themes/envision/lib/images/default-placeholder.png',
+      defaultImage: 'https://ebookfriendly.com/wp-content/uploads/2012/11/Book-iPad-wallpaper-Library.jpg',
       userImage: '<%= @review.image %>',
       invalidImage: false
     },

@@ -1,7 +1,7 @@
 <div class="container" id="reviews">
   <h2 class="mt-4 mb-5">List of reviews</h2>
-  <p v-if="listLength == 0">Oh snap! There are currently no reviews!
-    <span><%= link_to 'Add a review now', new_review_path %></span>
+  <p v-if="listLength == 0">Uh Oh! There's no reviews right now!
+    <span><%= link_to 'Rate & Review now!', new_review_path %></span>
   </p>
   <table v-if="listLength > 0" class="table">
     <thead>

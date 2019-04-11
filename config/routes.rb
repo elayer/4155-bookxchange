@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  
   get 'sessions/new'
   get 'users/new'
-  #root 'static_pages#home'
+  
   get 'static_pages/help'
   get 'users/new'
   get 'landing/index'
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   
   root 'landing#index'
   
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
   
 
   resources :reviews

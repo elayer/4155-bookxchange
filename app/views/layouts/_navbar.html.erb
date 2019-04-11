@@ -16,51 +16,7 @@
         <html>
         <body>
           
-        
-        
-        <!-- Facebook -->
-        <a href="http://www.facebook.com/sharer/sharer.php?u=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/" target="_blank" class="btn share-btn facebook">
-          <i class="fa fa-facebook"></i>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="http://www.linkedin.com/shareArticle?url=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/&title=BookXChange&summary=BookXChange-Share&source=https://gitlab.com/Jfergu54/4155-book-xchange.git" target="_blank" class="btn share-btn linkedin">
-          <i class="fa fa-linkedin"></i>
-        </a>
-
-        <!-- Twitter -->
-        <a href="http://twitter.com/share?url=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/&text=BookXChange-Share&via=BookXChange" target="_blank" class="btn share-btn twitter">
-          <i class="fa fa-twitter"></i>
-        </a>
-
-        <!-- Pinterest -->
-        <a href="http://pinterest.com/pin/create/button/?url=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/&description=BookXChange-Share" target="_blank" class="btn share-btn pinterest">
-          <i class="fa fa-pinterest"></i>
-        </a>
-
-        <!-- Google Plus -->
-        <a href="https://plus.google.com/share?url=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/" target="_blank" class="btn share-btn google-plus">
-          <i class="fa fa-google-plus"></i>
-        </a>
-
-        <!-- StumbleUpon -->
-        <a href="http://www.stumbleupon.com/submit?url=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/" target="_blank" class="btn share-btn stumbleupon">
-          <i class="fa fa-stumbleupon"></i>
-        </a>
-
-        <!-- Reddit -->
-        <a href="http://reddit.com/submit?url=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/" target="_blank" class="btn share-btn reddit">
-          <i class="fa fa-reddit"></i>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:?subject=BookXChange&body=Say Good Things About BookXChange!" target="_blank" class="btn share-btn email">
-          <i class="fa fa-envelope"></i>
-        </a>
-        
-        </body>
-        </html>
-        
+        <%= social_share_button_tag("Facebook", :url => "http://www.facebook.com/sharer/sharer.php?u=https://36ddd5269ad94887b61a7dc314d3c897.vfs.cloud9.us-east-2.amazonaws.com/") %>
         
         
       </ul>
@@ -84,6 +40,7 @@
         
         
         <% if logged_in? %>
+          <%= current_user.name %>
           <li><%= link_to "Users", '#', class: 'nav-item nav-link' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -94,6 +51,11 @@
                 <%= link_to "Log out", logout_path, method: :delete, class: 'nav-item nav-link' %>
               </li>
             </ul>
+            
+            <li class="<%= active_class?(conversations_path) %>">
+              <%= link_to 'Conversations', conversations_path, class: 'nav-item nav-link'%>
+            </li>
+        
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path, class: 'nav-item nav-link' %></li>

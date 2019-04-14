@@ -15,6 +15,7 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require semantic-ui
 //= require turbolinks
 //= require social-share-button
 //= require bootstrap

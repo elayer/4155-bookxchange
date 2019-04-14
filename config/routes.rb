@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   delete '/logout',  to: 'sessions#destroy'
   post '/signup',  to: 'users#create'
+  post '/conversations_path', to: 'conversations#create'
   
   root 'landing#index'
   
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
   end
-  
 
   resources :reviews
   

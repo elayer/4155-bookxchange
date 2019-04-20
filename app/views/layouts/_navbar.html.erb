@@ -54,21 +54,30 @@
             <li class="<%= active_class?(conversations_path) %>">
               <%= link_to 'Conversations', conversations_path, class: 'nav-item nav-link'%>
             </li>
+            
+            <li class="<%= active_class?(reviews_path) %>">
+              <%= link_to 'Reviews', reviews_path, class: 'nav-item nav-link'%>
+            </li>
+            
+            <li class="<%= active_class?(new_review_path) %>">
+              <%= link_to 'Rate & Review', new_review_path, class: 'nav-item nav-link'%>
+            </li>
+            
+            <li class="<%= active_class?(new_book_path) %>">
+              <%= link_to '"To Read" List', new_book_path, class: 'nav-item nav-link'%>
+            </li>
         
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path, class: 'nav-item nav-link' %></li>
+          
+          <li class="<%= active_class?(reviews_path) %>">
+            <%= link_to 'Reviews', reviews_path, class: 'nav-item nav-link'%>
+          </li>
         <% end %>
         
-        <li class="<%= active_class?(reviews_path) %>">
-          <%= link_to 'Reviews', reviews_path, class: 'nav-item nav-link'%>
-        </li>
-        <li class="<%= active_class?(new_review_path) %>">
-          <%= link_to 'Rate & Review', new_review_path, class: 'nav-item nav-link'%>
-        </li>
-        <li class="<%= active_class?(new_book_path) %>">
-          <%= link_to '"To Read" List', new_book_path, class: 'nav-item nav-link'%>
-        </li>
+        
+        
         
       </ul>
       

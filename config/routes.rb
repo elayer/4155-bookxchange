@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   
   resources :users
   
+  #namespace :user do
   resources :books
-
+  #end
 
 end

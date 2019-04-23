@@ -16,6 +16,17 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem "mailboxer"
+gem 'gravatar_image_tag'
+gem 'chosen-rails'
+
+
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap'
+
+
+gem 'jquery-turbolinks'
+
 #social media sharing
 gem 'social-share-button', '~> 0.1.6'
 

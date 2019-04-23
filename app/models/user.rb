@@ -16,5 +16,12 @@ class User < ApplicationRecord
   end
   
   has_many :conversations, :foreign_key => :sender_id
+  has_many :books
+  
+  acts_as_messageable
+  
+  def mailboxer_email(object)
+    email
+  end
   
 end

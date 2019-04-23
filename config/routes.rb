@@ -16,13 +16,21 @@ Rails.application.routes.draw do
   
   root 'landing#index'
   
-  resources :conversations, only: [:index, :create] do
-    resources :messages, only: [:index, :create]
+  #resources :conversations, only: [:index, :create] do
+  #  resources :messages, only: [:index, :create]
+  #end
+  
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :mark_as_read
+    end
   end
+  
+  resources :messages, only: [:new, :create]
 
   resources :reviews
   
-  resources :users
+  resources :users #, only: [:index]
   
   #namespace :user do
   resources :books

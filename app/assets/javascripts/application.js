@@ -19,3 +19,7 @@
 //= require turbolinks
 //= require social-share-button
 //= require bootstrap
+
+//= require jquery.turbolinks
+//= require chosen-jquery
+//= require messages

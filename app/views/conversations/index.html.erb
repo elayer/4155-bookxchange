@@ -1,32 +1,33 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
+<% page_header "Your Conversations" %>
 
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to recipient.name, conversation_messages_path(conversation)%>
-        <% end %>
-      <% end %>
-    </div>
+<p><%= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary' %></p>
+
+<div class="row">
+  <div class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+      <%= mailbox_section 'inbox', @box %> <br>
+      <%= mailbox_section 'sent', @box %> <br>
+      <%= mailbox_section 'trash', @box %>
+    </ul>
+  </div>
+
+  <div class="col-sm-9">
+    <ul class="list-group">
+      <%= render partial: 'conversations/conversation', collection: @conversations %>
+    </ul>
+
+    <%= will_paginate %>
   </div>
 </div>
 
+<div class="col-sm-9">
+  <% if @box == 'trash' %>
+    <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+                   data: {confirm: 'Are you sure?'} %></p>
+  <% end %>
+  <ul class="list-group">
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </ul>
 
-<div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.name %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= will_paginate %>
 </div>

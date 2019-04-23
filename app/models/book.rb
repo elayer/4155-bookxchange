@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-    belongs_to :book
+    belongs_to :user, optional: true
     
     def self.search(search)
         if search

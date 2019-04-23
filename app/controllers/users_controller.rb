@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def index
+    @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save

@@ -33,12 +33,18 @@
         </td>
         <td>
           <%= link_to 'Show', review_path(review), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Edit', edit_review_path(review), class: 'ml-2 btn btn-warning text-white btn-sm'%>
-          <%= link_to 'Delete',
-                            review_path(review),
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' }, 
-                            class: 'ml-2 btn btn-danger btn-sm'%>
+          
+          <% if current_user.id == review.user_id %>
+          
+            <%= link_to 'Edit', edit_review_path(review), class: 'ml-2 btn btn-warning text-white btn-sm'%>
+            <%= link_to 'Delete',
+                              review_path(review),
+                              method: :delete,
+                              data: { confirm: 'Are you sure?' }, 
+                              class: 'ml-2 btn btn-danger btn-sm'%>
+                            
+          <% end %>                 
+                            
         </td>
       </tr>
       <% end %>

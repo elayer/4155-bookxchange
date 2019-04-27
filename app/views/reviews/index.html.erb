@@ -16,6 +16,7 @@
         <th>Title</th>
         <th>Author</th>
         <th>Rating</th>
+        <th>Review: </th>
         <th>Options</th>
       </tr>
     </thead>
@@ -36,14 +37,17 @@
           <%= review.rating %>
         </td>
         <td>
-          <%= link_to 'Show', review_path(review), class: 'btn btn-primary btn-sm' %>
+          <%= review.text %>
+        </td>
+        <td>
+          <%= link_to 'Show Individual Review', review_path(review), class: 'btn btn-primary btn-sm' %>
           
           <% if logged_in? %>
           
             <% if current_user.id == review.user_id %>
           
-              <%= link_to 'Edit', edit_review_path(review), class: 'ml-2 btn btn-warning text-white btn-sm'%>
-              <%= link_to 'Delete',
+              <%= link_to 'Edit Review', edit_review_path(review), class: 'ml-2 btn btn-warning text-white btn-sm'%>
+              <%= link_to 'Delete Review',
                                 review_path(review),
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' }, 

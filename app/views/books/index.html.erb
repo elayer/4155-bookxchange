@@ -42,9 +42,9 @@
           <%= book.progress %>
         </td>
         <td>
-          <%= link_to 'Show', book_path(book), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Edit', edit_book_path(book), class: 'ml-2 btn btn-warning text-white btn-sm'%>
-          <%= link_to 'Delete',
+          <%= link_to 'Show Item', book_path(book), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Edit Item', edit_book_path(book), class: 'ml-2 btn btn-warning text-white btn-sm'%>
+          <%= link_to 'Delete Item',
                             book_path(book),
                             method: :delete,
                             data: { confirm: 'Are you sure?' }, 

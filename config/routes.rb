@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   
   resources :conversations, only: [:index, :show, :destroy] do
     member do
+      post :reply
+      post :restore
       post :mark_as_read
     end
   end

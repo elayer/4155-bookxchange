@@ -15,7 +15,7 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
   
-  has_many :conversations, :foreign_key => :sender_id
+#  has_many :conversations, :foreign_key => :sender_id
   has_many :books
   
   acts_as_messageable

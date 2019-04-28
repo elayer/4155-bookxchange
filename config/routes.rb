@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       post :restore
       post :mark_as_read
     end
+    collection do
+      delete :empty_trash
+    end
   end
   
   resources :messages, only: [:new, :create]

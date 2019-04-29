@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   post '/signup',  to: 'users#create'
   post '/conversations_path', to: 'conversations#create'
+  delete '/reviews/:id', to: 'reviews#destroy'
   
   root 'landing#index'
   

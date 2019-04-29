@@ -44,7 +44,7 @@
         <td>
           <%= link_to 'Show Item', book_path(book), class: 'btn btn-primary btn-sm' %>
           <%= link_to 'Edit Item', edit_book_path(book), class: 'ml-2 btn btn-warning text-white btn-sm'%>
-          <%= link_to 'Delete Item',
+          <%= button_to 'Delete Item',
                             book_path(book),
                             method: :delete,
                             data: { confirm: 'Are you sure?' }, 
@@ -67,5 +67,26 @@
       }
     }
   })
+  
+  class Confirm {
+  constructor(el) {
+    this.message = el.getAttribute('data-confirm')
+    if (this.message) {
+      el.form.addEventListener('submit', this.confirm.bind(this))
+    } else {
+      console && console.warn('No value specified in `data-confirm`', el)
+    }
+  }
+
+  confirm(e) {
+    if (!window.confirm(this.message)) {
+      e.preventDefault();
+    }
+  }
+}
+
+Array.from(document.querySelectorAll('[data-confirm]')).forEach((el) => {
+  new Confirm(el)
+})
   
 </script>
